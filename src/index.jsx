@@ -1,4 +1,4 @@
-
+import React from 'react';
 
 const rect = (femo) => (deps, callback) => (Component) => {
   class FemoComponent extends React.Component {
