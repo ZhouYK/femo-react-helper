@@ -5,8 +5,13 @@ const rect = (femo) => (deps, callback) => (Component) => {
     constructor(props) {
       super(props);
       this.state = {};
+      this.flag = 0;
       this.callback = (...args) => {
         const state = callback(...args);
+        if (this.flag === 0) {
+          this.state = state;
+          this.flag += 1;
+        }
         if (Object.prototype.toString.call(state) === '[object Object]') {
           this.setState({
             ...state
@@ -31,5 +36,7 @@ const rect = (femo) => (deps, callback) => (Component) => {
   FemoComponent.displayName = Component.displayName || Component.name;
   return FemoComponent;
 };
+
+rect.exposeName = 'react';
 
 export default rect;

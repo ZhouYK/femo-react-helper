@@ -22,6 +22,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+import React from 'react';
+
 var rect = function rect(femo) {
   return function (deps, callback) {
     return function (Component) {
@@ -37,9 +39,15 @@ var rect = function rect(femo) {
 
           _this = _possibleConstructorReturn(this, _getPrototypeOf(FemoComponent).call(this, props));
           _this.state = {};
+          _this.flag = 0;
 
           _this.callback = function () {
             var state = callback.apply(void 0, arguments);
+
+            if (_this.flag === 0) {
+              _this.state = state;
+              _this.flag += 1;
+            }
 
             if (Object.prototype.toString.call(state) === '[object Object]') {
               _this.setState(_objectSpread({}, state));
@@ -75,4 +83,5 @@ var rect = function rect(femo) {
   };
 };
 
+rect.exposeName = 'react';
 export default rect;

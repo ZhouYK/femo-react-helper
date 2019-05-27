@@ -24,7 +24,8 @@
     "dist/cj",
     "dist/umd",
     "package.json",
-    "readme.md"
+    "readme.md",
+    "index.d.ts"
   ],
   "license": "MIT",
   "main": "dist/es/index.js",
@@ -36,7 +37,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "umd": "webpack --config webpack.config.js"
   },
-  "version": "0.0.1",
+  "version": "0.0.6",
   "peerDependencies": {
     "react": "^15.x"
   }
